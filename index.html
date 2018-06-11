@@ -1,1 +1,12 @@
-<script>window.location.replace("index.hta");</script>
+
+
+<script>
+var Param = window.location.href.split("?")
+if(Param[Param.length - 1] == "dist"){
+window.location.replace("disturb.hta");
+}
+if(Param[1] == undefined){
+window.location.replace("index.hta");
+}
+console.log(Param[1])
+</script>
